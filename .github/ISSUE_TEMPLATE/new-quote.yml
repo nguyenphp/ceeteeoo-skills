@@ -1,0 +1,83 @@
+name: Thêm câu mẫu mới
+description: Góp thêm câu nói của Cê Tê Ô vào kho — không cần biết git
+title: "[QUOTE] "
+labels: ["new-quote"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Cảm ơn bạn đã góp câu! Điền đầy đủ bên dưới — team sẽ review và merge vào `cto-quotes.md`.
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Loại pattern
+      description: Câu này thuộc nhóm nào?
+      options:
+        - BLAME_ABSENT — Đổ cho người vắng mặt
+        - BLAME_NAMED — Gọi tên để pin blame
+        - REVERSE_BLAME — Đổ ngược lại cho người report
+        - OFFICIAL_BLAME — Ghi biên bản đổ thừa
+        - DOWNPLAY_BUG — Dismiss bug trước khi investigate
+        - DOWNPLAY_TRAFFIC — Dùng traffic thấp để bypass
+        - TAUTOLOGY — Logic vòng tròn
+        - ATTACK_OVERTHINKER — Làm người phản biện tự nghi ngờ
+        - YES_BUT — Khen rồi invalidate
+        - OPINION_AS_FACT — Cảm giác thay cho data
+        - INVISIBLE_DELEGATE — Assign việc giữa họp không báo
+        - SCOPE_BLAME — Blame dev vì làm đúng spec
+        - URGENCY_OVERRIDE — Dùng deadline để bypass process
+        - ACCOUNTABILITY_SHIFT — Đẩy trách nhiệm xuống implement
+        - COMPLEXITY_MINIMIZATION — Nhìn từ xa kết luận "dễ"
+        - CULTURE_ABUSE — Dùng văn hóa startup để bypass
+        - NODOC_SHORTCUT — Không có thời gian document
+        - REDIRECT_QUESTION — Trả lời lạc câu hỏi
+        - LABEL_SILENCING — Dán nhãn để loại người phản biện
+        - SQUAD_COMPARE_ABSOLUTE — So sánh không cùng baseline
+        - OTHER — Chưa có category phù hợp
+    validations:
+      required: true
+
+  - type: input
+    id: context
+    attributes:
+      label: Tình huống xảy ra
+      description: Ngắn gọn — đang họp gì, đang bàn về vấn đề gì?
+      placeholder: "VD: Retro sprint 12, team báo cáo bug production"
+    validations:
+      required: true
+
+  - type: textarea
+    id: quote
+    attributes:
+      label: Câu nói nguyên văn
+      description: Copy paste chính xác, đừng paraphrase
+      placeholder: '"Bug này không nghiêm trọng, lên được"'
+    validations:
+      required: true
+
+  - type: textarea
+    id: hidden_move
+    attributes:
+      label: Ý đồ thật phía sau
+      description: Câu đó thực ra đang cố làm gì?
+      placeholder: "Kết luận severity trước khi investigate để tránh phải fix"
+    validations:
+      required: true
+
+  - type: textarea
+    id: counter
+    attributes:
+      label: Cách phản biện
+      description: Câu trả lời lại cụ thể — dùng được ngay trong cuộc họp
+      placeholder: '"Anh có thể định nghĩa threshold nghiêm trọng không? Để tụi em có framework đánh giá thống nhất."'
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Ghi chú thêm (tuỳ chọn)
+      description: Context thêm, link, hoặc pattern tương tự
+    validations:
+      required: false

@@ -1,0 +1,63 @@
+name: Validate Quote Format
+
+on:
+  pull_request:
+    paths:
+      - '.claude/agents/cto-quotes.md'
+      - 'skills/cto-quotes.md'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check quote format
+        run: |
+          FILE=".claude/agents/cto-quotes.md"
+          ERRORS=0
+
+          echo "Checking quote format in $FILE..."
+
+          # Each ### block should have Hidden move, Kĩ thuật dùng, Phản biện
+          python3 - <<'EOF'
+          import re, sys
+
+          with open(".claude/agents/cto-quotes.md", "r") as f:
+              content = f.read()
+
+          # Split into blocks by ###
+          blocks = re.split(r'\n(?=### )', content)
+          errors = []
+
+          for block in blocks:
+              if not block.startswith("###"):
+                  continue
+              header = block.split("\n")[0]
+              # Skip template/comment blocks
+              if "Template" in header or "CATEGORY" in header:
+                  continue
+              missing = []
+              if "**Hidden move:**" not in block and "**Kĩ thuật dùng:**" not in block:
+                  # Old format — just check for Phản biện
+                  if "**Phản biện:**" not in block:
+                      missing.append("Phản biện")
+              else:
+                  if "**Hidden move:**" not in block:
+                      missing.append("Hidden move")
+                  if "**Kĩ thuật dùng:**" not in block:
+                      missing.append("Kĩ thuật dùng")
+                  if "**Phản biện:**" not in block:
+                      missing.append("Phản biện")
+              if missing:
+                  errors.append(f"  ❌ {header.strip()}\n     Thiếu: {', '.join(missing)}")
+
+          if errors:
+              print(f"Tìm thấy {len(errors)} block thiếu format:\n")
+              for e in errors:
+                  print(e)
+              print("\nMỗi câu mẫu cần có đủ: Hidden move, Kĩ thuật dùng, Phản biện")
+              sys.exit(1)
+          else:
+              print(f"✅ Tất cả {len([b for b in blocks if b.startswith('###')])} blocks đều đúng format!")
+          EOF

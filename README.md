@@ -2,7 +2,33 @@
 
 Roleplay training giúp dev luyện kỹ năng phản biện trước stakeholder khó tính.
 
-Tích hợp vào **Claude Code**, **Cursor**, hoặc **Antigravity**.
+Tích hợp vào **Claude Code**, **Cursor**, **Antigravity**, **Windsurf**, **Copilot**.
+
+---
+
+## Đóng góp câu mẫu
+
+Nghe được câu hay từ CTO? Thêm vào kho để mọi người cùng luyện.
+
+**Cách dễ nhất — không cần biết git:**
+
+👉 [Tạo Issue mới](../../issues/new?template=new-quote.yml) → điền form → submit
+
+**Cách đầy đủ hơn — tự merge:**
+
+1. Fork repo này
+2. Thêm vào [`.claude/agents/cto-quotes.md`](.claude/agents/cto-quotes.md) theo format:
+
+```markdown
+### [CATEGORY] — <context ngắn>
+> "câu nói nguyên văn"
+
+**Hidden move:** <ý đồ thật>
+**Kĩ thuật dùng:** <tên kĩ thuật>
+**Phản biện:** <câu counter dùng được ngay trong họp>
+```
+
+3. Tạo PR — CI sẽ tự check format
 
 ---
 
@@ -28,174 +54,96 @@ ceeteeoo init --ai all         # Tất cả
 **Cài global** (dùng được trong mọi project, không cần chạy lại mỗi project):
 
 ```bash
-ceeteeoo init --ai claude --global
 ceeteeoo init --ai all --global
 ```
 
----
-
-## Cách dùng sau khi cài
-
-### Claude Code
-
-**Roleplay trực tiếp với agent:**
-
-Gõ trong Claude Code chat:
-```
-use cto
-```
-
-Claude sẽ hỏi tình huống rồi bắt đầu đóng vai CTO.
-
----
-
-**Chuẩn bị phản biện trước meeting (`/cto-debate`):**
-
-```
-/cto-debate tại sao cần thêm 3 ngày cho premium flow
-/cto-debate US-1156
-```
-
-Chọn:
-- **[1] Roleplay** — luyện phản biện theo tình huống, có chấm điểm
-- **[2] Report** — tạo file HTML với toàn bộ câu hỏi CTO có thể hỏi + cách counter, mang vào họp
-
----
-
-**Phân tích rủi ro ticket (`/cto-roast`):**
-
-```
-/cto-roast US-1065
-/cto-roast US-1065 --challenge
-```
-
-Phân tích rủi ro kỹ thuật của ticket, sau đó simulate CTO attack đúng điểm yếu.
-
----
-
-**Counter hội thoại thật (`/cto-counter`):**
-
-```
-/cto-counter
-```
-
-Paste đoạn chat/Slack/meeting vào → nhận ngay:
-- Pattern CTO đang dùng + hidden move
-- Câu phản biện dùng được ngay
-- Dẫn chứng kỹ thuật / nguyên tắc engineering có link
-- Câu chốt buộc ổng phải trả lời thẳng
-
----
-
-### Cursor
-
-Mở chat, tag `@cto` rồi mô tả tình huống:
-
-```
-@cto CTO nói bug này không nghiêm trọng, lên được
-```
-
----
-
-### Antigravity
-
-Mở chat, gọi:
-
-```
-@cto deadline gấp nên phải đổi squad, không có thời gian handover
-```
-
----
-
-## Cài thủ công (không dùng script)
-
 <details>
-<summary>Claude Code</summary>
+<summary>Cài thủ công không qua npm</summary>
 
-**Global** (dùng được trong mọi project):
+**Claude Code — Global:**
 ```bash
 mkdir -p ~/.claude/agents ~/.claude/commands
 curl -o ~/.claude/agents/cto.md           https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.claude/agents/cto.md
 curl -o ~/.claude/agents/cto-quotes.md    https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.claude/agents/cto-quotes.md
 curl -o ~/.claude/commands/cto-debate.md  https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.claude/commands/cto-debate.md
 curl -o ~/.claude/commands/cto-roast.md   https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.claude/commands/cto-roast.md
+curl -o ~/.claude/commands/cto-counter.md https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.claude/commands/cto-counter.md
 ```
 
-**Project-local** (chỉ project hiện tại):
-```bash
-mkdir -p .claude/agents .claude/commands
-curl -o .claude/agents/cto.md           https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.claude/agents/cto.md
-curl -o .claude/agents/cto-quotes.md    https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.claude/agents/cto-quotes.md
-curl -o .claude/commands/cto-debate.md  https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.claude/commands/cto-debate.md
-curl -o .claude/commands/cto-roast.md   https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.claude/commands/cto-roast.md
-```
-
-</details>
-
-<details>
-<summary>Cursor</summary>
-
+**Cursor / Windsurf — Project-local:**
 ```bash
 mkdir -p .cursor/rules
-curl -o .cursor/rules/cto.mdc https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.cursor/rules/cto.mdc
+curl -o .cursor/rules/cto.mdc         https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.cursor/rules/cto.mdc
+curl -o .cursor/rules/cto-debate.mdc  https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.cursor/rules/cto-debate.mdc
+curl -o .cursor/rules/cto-roast.mdc   https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.cursor/rules/cto-roast.mdc
+curl -o .cursor/rules/cto-counter.mdc https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.cursor/rules/cto-counter.mdc
 ```
 
-Sau đó: Cursor Settings → Rules → bật rule `cto`.
-
-</details>
-
-<details>
-<summary>Antigravity</summary>
-
-**Global:**
-```bash
-mkdir -p ~/.gemini/antigravity/skills
-curl -o ~/.gemini/antigravity/skills/cto.md https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.antigravity/skills/cto.md
-```
-
-**Project-local:**
+**Antigravity — Project-local:**
 ```bash
 mkdir -p .antigravity/skills
-curl -o .antigravity/skills/cto.md https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.antigravity/skills/cto.md
+curl -o .antigravity/skills/cto.md         https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.antigravity/skills/cto.md
+curl -o .antigravity/skills/cto-debate.md  https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.antigravity/skills/cto-debate.md
+curl -o .antigravity/skills/cto-roast.md   https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.antigravity/skills/cto-roast.md
+curl -o .antigravity/skills/cto-counter.md https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.antigravity/skills/cto-counter.md
 ```
 
 </details>
+
+---
+
+## Cách dùng
+
+### Claude Code
+
+| Command | Dùng khi nào |
+|---|---|
+| `use cto` | Roleplay trực tiếp — luyện phản biện |
+| `/cto-debate` | Chuẩn bị trước meeting — roleplay hoặc tạo report HTML |
+| `/cto-roast` | Phân tích rủi ro ticket + simulate CTO attack |
+| `/cto-counter` | Paste hội thoại thật → nhận counter-argument + dẫn chứng |
+
+**Ví dụ:**
+```
+use cto
+
+/cto-debate US-1156
+/cto-debate tại sao cần thêm 3 ngày cho premium flow
+
+/cto-roast US-1065 --challenge
+
+/cto-counter
+[paste đoạn chat vào]
+```
+
+### Cursor / Windsurf
+
+```
+@cto CTO nói bug này không nghiêm trọng, lên được
+@cto-debate tại sao cần thêm 3 ngày
+@cto-counter [paste đoạn chat]
+```
+
+### Antigravity
+
+```
+@cto deadline gấp nên phải đổi squad
+@cto-debate US-1156
+@cto-counter [paste đoạn chat]
+```
 
 ---
 
 ## Cấu hình Jira (tuỳ chọn)
 
-`/cto-debate` và `/cto-roast` có thể tự fetch ticket từ Jira nếu set env:
+`/cto-debate` và `/cto-roast` tự fetch ticket nếu set env:
 
 ```bash
-# Thêm vào ~/.zshrc hoặc ~/.bashrc
 export JIRA_TOKEN="your_personal_token"
 export JIRA_BASE_URL="https://your-company.atlassian.net"
 ```
 
-Không có Jira thì bỏ qua — mô tả bằng text vẫn chạy được.
-
----
-
-## Đóng góp câu mẫu mới
-
-Kho câu mẫu nằm ở [`.claude/agents/cto-quotes.md`](.claude/agents/cto-quotes.md).
-
-**Cách thêm:**
-
-1. Fork repo này
-2. Thêm vào `cto-quotes.md` theo format:
-
-```markdown
-### [CATEGORY] — <context ngắn>
-> "câu nói nguyên văn"
-
-**Hidden move:** <ý đồ thật>
-**Kĩ thuật dùng:** <tên kĩ thuật>
-**Phản biện:** <cách counter cụ thể>
-```
-
-3. Tạo PR với title: `[CATEGORY] thêm pattern: <mô tả ngắn>`
+Không có Jira thì mô tả bằng text cũng được.
 
 ---
 
