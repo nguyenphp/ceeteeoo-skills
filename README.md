@@ -1,6 +1,14 @@
 # Cê Tê Ô Skills
 
-Bộ công cụ roleplay và training giúp dev luyện kỹ năng phản biện trước stakeholder khó tính — tích hợp vào Claude Code hoặc Cursor.
+Bộ công cụ roleplay và training giúp dev luyện kỹ năng phản biện trước stakeholder khó tính — tích hợp vào Claude Code, Cursor, hoặc Antigravity.
+
+## Cài đặt nhanh
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/install.sh | bash
+```
+
+Script sẽ hỏi bạn muốn cài global hay project-local, và cho tool nào.
 
 ---
 
@@ -16,6 +24,9 @@ Bộ công cụ roleplay và training giúp dev luyện kỹ năng phản biện
 ---
 
 ## Cài đặt
+
+> **Nhanh nhất:** Chạy script ở trên — nó tự hỏi scope và tool.
+> Hoặc cài thủ công theo từng tool bên dưới.
 
 ### Claude Code
 
