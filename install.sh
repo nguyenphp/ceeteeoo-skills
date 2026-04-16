@@ -19,7 +19,7 @@ echo -e "${BOLD}Cài ở đâu?${RESET}"
 echo "  [1] Global — dùng được trong mọi project (mặc định)"
 echo "  [2] Project-local — chỉ project hiện tại ($(pwd))"
 echo ""
-read -rp "Chọn [1/2, Enter = 1]: " scope_choice </dev/tty
+read -rp "Chọn [1/2, Enter = 1]: " scope_choice
 scope_choice="${scope_choice:-1}"
 
 if [[ "$scope_choice" == "2" ]]; then
@@ -45,7 +45,7 @@ echo "  [2] Cursor (rules)"
 echo "  [3] Antigravity (skills)"
 echo "  [4] Tất cả"
 echo ""
-read -rp "Chọn [1/2/3/4, Enter = 4]: " tool_choice </dev/tty
+read -rp "Chọn [1/2/3/4, Enter = 4]: " tool_choice
 tool_choice="${tool_choice:-4}"
 
 echo ""

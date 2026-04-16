@@ -1,0 +1,17 @@
+{
+  "name": "ceeteeoo",
+  "version": "1.0.0",
+  "description": "CTO Roleplay Training — install Cê Tê Ô skills for Claude Code, Cursor, Antigravity and more",
+  "bin": {
+    "ceeteeoo": "./bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    "skills/"
+  ],
+  "keywords": ["claude", "cursor", "ai", "roleplay", "training", "vietnamese"],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}

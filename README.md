@@ -8,15 +8,29 @@ Tích hợp vào **Claude Code**, **Cursor**, hoặc **Antigravity**.
 
 ## Cài đặt
 
-Chạy 1 lệnh, script tự hỏi phần còn lại:
+**Cài npm CLI một lần:**
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/install.sh | bash
+npm install -g ceeteeoo
 ```
 
-Script sẽ hỏi:
-1. **Cài ở đâu?** — Global (mọi project) hoặc project hiện tại
-2. **Cho tool nào?** — Claude Code / Cursor / Antigravity / Tất cả
+**Sau đó, trong project muốn dùng:**
+
+```bash
+ceeteeoo init --ai claude      # Claude Code
+ceeteeoo init --ai cursor      # Cursor
+ceeteeoo init --ai antigravity # Antigravity
+ceeteeoo init --ai windsurf    # Windsurf
+ceeteeoo init --ai copilot     # GitHub Copilot
+ceeteeoo init --ai all         # Tất cả
+```
+
+**Cài global** (dùng được trong mọi project, không cần chạy lại mỗi project):
+
+```bash
+ceeteeoo init --ai claude --global
+ceeteeoo init --ai all --global
+```
 
 ---
 
