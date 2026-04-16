@@ -23,10 +23,11 @@ const TOOLS = {
   claude: {
     label: 'Claude Code',
     install(dest) {
-      copy('cto-agent.md',         path.join(dest, '.claude', 'agents', 'cto.md'));
-      copy('cto-quotes.md',        path.join(dest, '.claude', 'agents', 'cto-quotes.md'));
-      copy('cto-debate-command.md',path.join(dest, '.claude', 'commands', 'cto-debate.md'));
-      copy('cto-roast-command.md', path.join(dest, '.claude', 'commands', 'cto-roast.md'));
+      copy('cto-agent.md',           path.join(dest, '.claude', 'agents', 'cto.md'));
+      copy('cto-quotes.md',          path.join(dest, '.claude', 'agents', 'cto-quotes.md'));
+      copy('cto-debate-command.md',  path.join(dest, '.claude', 'commands', 'cto-debate.md'));
+      copy('cto-roast-command.md',   path.join(dest, '.claude', 'commands', 'cto-roast.md'));
+      copy('cto-counter-command.md', path.join(dest, '.claude', 'commands', 'cto-counter.md'));
     },
     usage: 'Gõ `use cto` hoặc `/cto-debate`, `/cto-roast` trong Claude Code',
   },
