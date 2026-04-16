@@ -57,6 +57,24 @@ Sau đó mở Cursor Settings > Rules > bật rule `cto`.
 
 ---
 
+### Antigravity
+
+**Cài global** (dùng được trong mọi project):
+
+```bash
+mkdir -p ~/.gemini/antigravity/skills
+curl -o ~/.gemini/antigravity/skills/cto.md https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.antigravity/skills/cto.md
+```
+
+**Cài cho 1 project cụ thể:**
+
+```bash
+mkdir -p .antigravity/skills
+curl -o .antigravity/skills/cto.md https://raw.githubusercontent.com/nguyenphp/ceeteeoo-skills/main/.antigravity/skills/cto.md
+```
+
+---
+
 ## Cách dùng
 
 ### Claude Code
@@ -87,6 +105,15 @@ Mở chat, tag rule `@cto`, rồi mô tả tình huống:
 ```
 @cto CTO nói bug này không nghiêm trọng, lên được
 ```
+
+### Antigravity
+
+Mở chat trong Antigravity, gọi skill:
+```
+@cto Bug này không có mấy người dùng, lên thôi
+```
+
+Hoặc để agent tự kích hoạt khi bạn describe tình huống liên quan đến phản biện CTO.
 
 ---
 
