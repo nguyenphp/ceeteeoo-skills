@@ -34,23 +34,32 @@ const TOOLS = {
   cursor: {
     label: 'Cursor',
     install(dest) {
-      copy('cto-cursor.mdc', path.join(dest, '.cursor', 'rules', 'cto.mdc'));
+      copy('cto-cursor.mdc',         path.join(dest, '.cursor', 'rules', 'cto.mdc'));
+      copy('cto-cursor-debate.mdc',  path.join(dest, '.cursor', 'rules', 'cto-debate.mdc'));
+      copy('cto-cursor-roast.mdc',   path.join(dest, '.cursor', 'rules', 'cto-roast.mdc'));
+      copy('cto-cursor-counter.mdc', path.join(dest, '.cursor', 'rules', 'cto-counter.mdc'));
     },
-    usage: 'Tag `@cto` trong Cursor chat',
+    usage: 'Tag @cto / @cto-debate / @cto-roast / @cto-counter trong Cursor chat',
   },
   antigravity: {
     label: 'Antigravity',
     install(dest) {
-      copy('cto-antigravity.md', path.join(dest, '.antigravity', 'skills', 'cto.md'));
+      copy('cto-antigravity.md',  path.join(dest, '.antigravity', 'skills', 'cto.md'));
+      copy('cto-ag-debate.md',    path.join(dest, '.antigravity', 'skills', 'cto-debate.md'));
+      copy('cto-ag-roast.md',     path.join(dest, '.antigravity', 'skills', 'cto-roast.md'));
+      copy('cto-ag-counter.md',   path.join(dest, '.antigravity', 'skills', 'cto-counter.md'));
     },
-    usage: 'Tag `@cto` trong Antigravity chat',
+    usage: 'Tag @cto / @cto-debate / @cto-roast / @cto-counter trong Antigravity chat',
   },
   windsurf: {
     label: 'Windsurf',
     install(dest) {
-      copy('cto-cursor.mdc', path.join(dest, '.windsurf', 'rules', 'cto.md'));
+      copy('cto-cursor.mdc',         path.join(dest, '.windsurf', 'rules', 'cto.md'));
+      copy('cto-cursor-debate.mdc',  path.join(dest, '.windsurf', 'rules', 'cto-debate.md'));
+      copy('cto-cursor-roast.mdc',   path.join(dest, '.windsurf', 'rules', 'cto-roast.md'));
+      copy('cto-cursor-counter.mdc', path.join(dest, '.windsurf', 'rules', 'cto-counter.md'));
     },
-    usage: 'Tag `@cto` trong Windsurf chat',
+    usage: 'Tag @cto / @cto-debate / @cto-roast / @cto-counter trong Windsurf chat',
   },
   copilot: {
     label: 'GitHub Copilot',

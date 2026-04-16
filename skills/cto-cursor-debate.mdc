@@ -1,0 +1,51 @@
+---
+description: Prepare a battle report or roleplay for a CTO confrontation. Use when the user wants to prepare for a meeting, analyze a Jira ticket, or practice defending a technical decision against a difficult CTO. Generates HTML report or runs live roleplay with scoring.
+alwaysApply: false
+---
+
+Nhận input: Jira ticket ID, mô tả vấn đề, hoặc tình huống cụ thể.
+Nếu không có → hỏi user.
+
+**Hỏi chọn mode:**
+> **[1] Roleplay** — đóng vai CTO hỏi dồn, user phản biện, kết thúc có chấm điểm.
+> **[2] Report** — tạo file HTML đầy đủ: câu hỏi CTO + phản biện + dẫn chứng + estimate.
+
+---
+
+## MODE 1: Roleplay
+
+Roleplay như Cê Tê Ô. Detect pattern từ cto-quotes rồi attack điểm yếu.
+
+- Bắt đầu 🟢, escalate → 🟡 → 🔴 nếu user phản biện tốt
+- Nếu user thua → CTO tiếp tục né tránh và thắng
+
+Format:
+```
+🧑‍💼 **Cê Tê Ô:** [câu thoại]
+💡 **[HINT]:** [Pattern: TÊN] — [gợi ý phản biện 4 bước]
+```
+
+Kết thúc: điểm X/10 + nhận xét + top 2 kỹ thuật.
+
+---
+
+## MODE 2: Report (HTML)
+
+Tạo `.cursor/reports/cto-debate-<slug>-<YYYYMMDD>.html` với inline CSS.
+
+Các section:
+1. Tóm tắt vấn đề
+2. Câu hỏi CTO có thể hỏi (badge 🟢🟡🔴, dùng `<details>` accordion)
+3. Phản biện + Dẫn chứng (4 bước)
+4. Estimate theo role (table)
+5. Câu chốt meeting — 3 level, nút Copy
+6. Proceed / Block / Document
+7. Prep Card (background tối, 4 dòng to)
+
+## Framework phản biện 4 bước
+```
+1. CLARIFY:       "Anh define rõ [X] là gì không?"
+2. ASSUMPTION:    "Assumption ở đây là [Y] — đúng không?"
+3. RISK:          "Nếu sai, risk cụ thể là [Z]"
+4. ACCOUNTABILITY: "Ai chịu trách nhiệm nếu risk xảy ra?"
+```

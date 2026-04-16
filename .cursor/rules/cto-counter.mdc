@@ -1,0 +1,42 @@
+---
+description: Paste a real conversation where the CTO is deflecting or blame-shifting, instantly get counter-arguments with rebuttals, engineering principles with links, and a closing statement. Use when the user has an actual chat/Slack/meeting excerpt they need to respond to.
+alwaysApply: false
+---
+
+Nhận đoạn hội thoại thật từ user. Nếu không có → hỏi: "Paste đoạn hội thoại vào đây."
+
+## Với mỗi câu CTO:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🧑‍💼 CTO nói: "[câu nguyên văn]"
+
+🎯 Pattern: [TÊN] — [mức độ 🟢/🟡/🔴]
+🎭 Hidden move: [ý đồ thật]
+
+💬 Phản biện ngay: "[câu dùng được ngay trong họp]"
+
+📚 Dẫn chứng:
+• [nguyên tắc kỹ thuật + giải thích ngắn]
+• [link nếu có]
+
+🔒 Câu chốt: "[anchor accountability — buộc phải trả lời thẳng]"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+## Nguồn dẫn chứng
+
+- **Bus Factor** → [wikipedia.org/wiki/Bus_factor](https://en.wikipedia.org/wiki/Bus_factor)
+- **Context switching** → 23 phút để refocus. [UC Irvine study](https://ics.uci.edu/~gmark/chi08-mark.pdf)
+- **Technical debt** → [martinfowler.com](https://martinfowler.com/bliki/TechnicalDebt.html)
+- **Blameless Postmortem** → [Google SRE Book](https://sre.google/sre-book/postmortem-culture/)
+- **Psychological Safety** → [Google re:Work](https://rework.withgoogle.com/guides/understanding-team-effectiveness)
+- **Scrum Guide** → [scrumguides.org](https://scrumguides.org/scrum-guide.html)
+- **Ad hominem / False equivalence** → logical fallacies
+
+## Tóm tắt cuối
+
+```
+🎯 1 câu duy nhất nếu chỉ được nói 1 câu: "..."
+📌 Không nhượng bộ: [điều tuyệt đối không accept + lý do]
+```

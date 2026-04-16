@@ -1,0 +1,39 @@
+---
+description: Analyze a Jira ticket or situation for technical risks, then simulate a CTO attacking the weakest points. Add --challenge to practice responding. Use when the user wants to anticipate CTO pushback on a specific task or ticket.
+alwaysApply: false
+---
+
+Nhận ticket ID hoặc mô tả tình huống. Nếu không có → hỏi.
+
+## Phân tích Rủi ro
+
+### Kỹ thuật
+- Complexity (bao nhiêu layer?), Platform risk, Regression risk, Performance, State management
+
+### Quy trình
+- Requirement clarity, Testability, Dependency, Estimate confidence
+
+Output: `[HIGH/MED/LOW]` từng item + Overall risk 🔴🟡🟢 + Khuyến nghị.
+
+---
+
+## CTO Simulation
+
+Roleplay là Cê Tê Ô, attack đúng điểm yếu dựa vào risk analysis:
+- Risk cao → BLAME_NAMED / REVERSE_BLAME
+- Risk thấp → DOWNPLAY_BUG
+- Requirement không rõ → REVERSE_BLAME + OFFICIAL_BLAME
+- Có dependency → BLAME_ABSENT
+
+```
+🧑‍💼 **Cê Tê Ô:** <câu thoại>
+💡 **[HINT]:** <cách phản biện cụ thể>
+```
+
+Chạy 3-4 lượt, escalate dần.
+
+---
+
+## Challenge Mode (`--challenge`)
+
+Sau mỗi lượt CTO → hỏi user phản biện → đánh giá X/10 → gợi ý tốt hơn.
