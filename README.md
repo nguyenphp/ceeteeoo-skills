@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo.png" width="480" alt="Cê Tê Ô Skills" />
+</p>
+
 # Cê Tê Ô Skills
 
 Roleplay training giúp dev luyện kỹ năng phản biện trước stakeholder khó tính.
