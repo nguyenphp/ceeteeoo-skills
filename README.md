@@ -6,73 +6,6 @@ Tích hợp vào **Claude Code**, **Cursor**, **Antigravity**, **Windsurf**, **C
 
 ---
 
-## Ví dụ
-
-Gõ `/cto-counter` rồi paste đoạn hội thoại vào:
-
-```
-CTO: "cái bug premium này là do Duy với Kiên chứ ai, backend chưa
-      golive mà tụi em đã release là sao?"
-Dev: "Dạ backend đã golive từ thứ 3, em có link deploy đây anh."
-CTO: "ừ thì... nhưng mà lần sau tụi em phải nói sớm hơn,
-      anh không biết backend golive lúc nào đâu"
-```
-
-**Output:**
-
----
-
-**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
-
-🧑‍💼 **CTO nói:** *"cái bug premium này là do Duy với Kiên chứ ai, backend chưa golive mà tụi em đã release là sao?"*
-
-🎯 **Pattern:** `BLAME_NAMED` + `BLAME_ABSENT` — 🟢 Common  
-🎭 **Hidden move:** Gọi tên cụ thể 2 người vắng mặt để pin blame trước khi có bất kỳ investigation nào — tạo "tội nhân" ngay trong cuộc họp, người còn lại không dám bênh vực.
-
-💬 **Phản biện ngay:**  
-*"Anh ơi mình tìm root cause trước — backend golive chưa, log lỗi cụ thể là gì, rồi assign action item sau. Blame trước investigate sau thì sẽ fix sai chỗ."*
-
-📚 **Dẫn chứng:**
-- **Blameless Postmortem** (Google SRE) — tìm root cause trước, không blame người — vì lỗi hệ thống thường do nhiều yếu tố, không phải 1 người. [sre.google/sre-book/postmortem-culture](https://sre.google/sre-book/postmortem-culture/)
-- Blame sớm làm team sợ report lỗi → bug bị giấu lâu hơn → thiệt hại lớn hơn.
-
-🔒 **Câu chốt nếu ổng tiếp tục:**  
-*"Anh có thể confirm backend golive hay chưa trước không? Em có link deploy ở đây. Nếu đã golive thì root cause không phải backend — mình cần điều tra tiếp."*
-
-**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
-
-🧑‍💼 **CTO nói:** *"ừ thì... nhưng mà lần sau tụi em phải nói sớm hơn, anh không biết backend golive lúc nào đâu"*
-
-🎯 **Pattern:** `REVERSE_BLAME` — 🟢 Common  
-🎭 **Hidden move:** Acknowledge thua điểm trước (backend đã golive) nhưng ngay lập tức pivot sang blame dev vì "không communicate sớm" — thoát khỏi blame mà không cần nhận sai.
-
-💬 **Phản biện ngay:**  
-*"Dạ em có post link deploy lên channel #releases lúc 10:23 sáng thứ 3. Anh muốn tụi em notify thêm ở đâu nữa không? Tụi em làm ngay."*
-
-📚 **Dẫn chứng:**
-- Luôn document mọi thứ có timestamp — link deploy, message Slack, ticket update. Khi bị `REVERSE_BLAME`, đưa timestamp ra là kết thúc ngay.
-- Nếu chưa có record: *"Dạ lần sau em sẽ tag anh trực tiếp — anh muốn notify qua Slack hay email?"* — biến thành action item, không nhận blame.
-
-🔒 **Câu chốt:**  
-*"Anh ơi em có notify rồi — [link message]. Nếu format chưa đúng kỳ vọng thì mình define lại process để lần sau tụi em làm đúng ngay."*
-
-**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
-
-> **═══════════════════════════════════════**  
-> 📋 **TỔNG KẾT CHIẾN LƯỢC**
->
-> **Patterns đang dùng:** `BLAME_NAMED` → `BLAME_ABSENT` → `REVERSE_BLAME`  
-> **Điểm yếu:** Cả 3 câu đều không có evidence — chỉ có assumption và cảm giác. Câu 2 tự mâu thuẫn với câu 1.
->
-> 🎯 **Nếu chỉ được nói 1 câu:**  
-> *"Anh ơi backend đã golive thứ 3, em có link — mình investigate log lỗi cụ thể trước nhé?"*
->
-> 📌 **Không nhượng bộ:**  
-> Không nhận "do tụi em không nói sớm" khi đã có evidence đã notify đúng channel. Nhận action item cải thiện process thì được — nhận blame thì không.  
-> **═══════════════════════════════════════**
-
----
-
 ## Đóng góp câu mẫu
 
 Nghe được câu hay từ CTO? Thêm vào kho để mọi người cùng luyện.
@@ -156,6 +89,73 @@ curl -o .antigravity/skills/cto-counter.md https://raw.githubusercontent.com/ngu
 ```
 
 </details>
+
+---
+
+## Ví dụ
+
+Gõ `/cto-counter` rồi paste đoạn hội thoại vào:
+
+```
+CTO: "cái bug premium này là do Duy với Kiên chứ ai, backend chưa
+      golive mà tụi em đã release là sao?"
+Dev: "Dạ backend đã golive từ thứ 3, em có link deploy đây anh."
+CTO: "ừ thì... nhưng mà lần sau tụi em phải nói sớm hơn,
+      anh không biết backend golive lúc nào đâu"
+```
+
+**Output:**
+
+---
+
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+
+🧑‍💼 **CTO nói:** *"cái bug premium này là do Duy với Kiên chứ ai, backend chưa golive mà tụi em đã release là sao?"*
+
+🎯 **Pattern:** `BLAME_NAMED` + `BLAME_ABSENT` — 🟢 Common  
+🎭 **Hidden move:** Gọi tên cụ thể 2 người vắng mặt để pin blame trước khi có bất kỳ investigation nào — tạo "tội nhân" ngay trong cuộc họp, người còn lại không dám bênh vực.
+
+💬 **Phản biện ngay:**  
+*"Anh ơi mình tìm root cause trước — backend golive chưa, log lỗi cụ thể là gì, rồi assign action item sau. Blame trước investigate sau thì sẽ fix sai chỗ."*
+
+📚 **Dẫn chứng:**
+- **Blameless Postmortem** (Google SRE) — tìm root cause trước, không blame người — vì lỗi hệ thống thường do nhiều yếu tố, không phải 1 người. [sre.google/sre-book/postmortem-culture](https://sre.google/sre-book/postmortem-culture/)
+- Blame sớm làm team sợ report lỗi → bug bị giấu lâu hơn → thiệt hại lớn hơn.
+
+🔒 **Câu chốt nếu ổng tiếp tục:**  
+*"Anh có thể confirm backend golive hay chưa trước không? Em có link deploy ở đây. Nếu đã golive thì root cause không phải backend — mình cần điều tra tiếp."*
+
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+
+🧑‍💼 **CTO nói:** *"ừ thì... nhưng mà lần sau tụi em phải nói sớm hơn, anh không biết backend golive lúc nào đâu"*
+
+🎯 **Pattern:** `REVERSE_BLAME` — 🟢 Common  
+🎭 **Hidden move:** Acknowledge thua điểm trước (backend đã golive) nhưng ngay lập tức pivot sang blame dev vì "không communicate sớm" — thoát khỏi blame mà không cần nhận sai.
+
+💬 **Phản biện ngay:**  
+*"Dạ em có post link deploy lên channel #releases lúc 10:23 sáng thứ 3. Anh muốn tụi em notify thêm ở đâu nữa không? Tụi em làm ngay."*
+
+📚 **Dẫn chứng:**
+- Luôn document mọi thứ có timestamp — link deploy, message Slack, ticket update. Khi bị `REVERSE_BLAME`, đưa timestamp ra là kết thúc ngay.
+- Nếu chưa có record: *"Dạ lần sau em sẽ tag anh trực tiếp — anh muốn notify qua Slack hay email?"* — biến thành action item, không nhận blame.
+
+🔒 **Câu chốt:**  
+*"Anh ơi em có notify rồi — [link message]. Nếu format chưa đúng kỳ vọng thì mình define lại process để lần sau tụi em làm đúng ngay."*
+
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+
+> **═══════════════════════════════════════**  
+> 📋 **TỔNG KẾT CHIẾN LƯỢC**
+>
+> **Patterns đang dùng:** `BLAME_NAMED` → `BLAME_ABSENT` → `REVERSE_BLAME`  
+> **Điểm yếu:** Cả 3 câu đều không có evidence — chỉ có assumption và cảm giác. Câu 2 tự mâu thuẫn với câu 1.
+>
+> 🎯 **Nếu chỉ được nói 1 câu:**  
+> *"Anh ơi backend đã golive thứ 3, em có link — mình investigate log lỗi cụ thể trước nhé?"*
+>
+> 📌 **Không nhượng bộ:**  
+> Không nhận "do tụi em không nói sớm" khi đã có evidence đã notify đúng channel. Nhận action item cải thiện process thì được — nhận blame thì không.  
+> **═══════════════════════════════════════**
 
 ---
 
