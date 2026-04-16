@@ -6,6 +6,73 @@ Tích hợp vào **Claude Code**, **Cursor**, **Antigravity**, **Windsurf**, **C
 
 ---
 
+## Ví dụ output
+
+<details>
+<summary><b>/cto-counter</b> — paste hội thoại thật, nhận counter-argument ngay</summary>
+
+**Input:** Paste đoạn này vào sau khi gõ `/cto-counter`
+
+```
+CTO: "cảm giác như tính năng live activity này em code lỗi á"
+```
+
+---
+
+**Output:**
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🧑‍💼 CTO nói: "cảm giác như tính năng live activity này em code lỗi á"
+
+🎯 Pattern: OPINION_AS_FACT — 🟡 Advanced
+🎭 Hidden move: Dùng "cảm giác" để đặt verdict mà không cần evidence —
+   buộc dev phải defensive và chứng minh mình vô tội thay vì yêu cầu
+   data. Nếu dev không phản biện, assumption "em code lỗi" mặc định thành sự thật.
+
+💬 Phản biện ngay lập tức:
+"Anh có reproduce steps cụ thể không? Device nào, iOS version nào,
+ flow nào? Tụi em cần basis để investigate — không thì không biết
+ fix chỗ nào."
+
+📚 Dẫn chứng để backup:
+• Absence of evidence ≠ evidence of absence — "cảm giác có lỗi"
+  không phải bug report. Cần: reproduce steps + device + log.
+• Live Activity chạy trên ActivityKit (iOS 16.1+) — behavior
+  thay đổi theo iOS version, lock screen policy, và notification
+  permission. "Lỗi" có thể là platform behavior, không phải code.
+• Burden of proof thuộc về người claim — người nói "có lỗi"
+  cần cung cấp evidence, không phải dev phải chứng minh ngược.
+
+🔒 Câu chốt — nếu ổng vẫn tiếp tục né:
+"Anh share log hoặc mô tả reproduce steps thì tụi em investigate
+ ngay. Nếu không có steps cụ thể thì đây là assumption, không phải
+ bug — tụi em không thể fix assumption."
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+═══════════════════════════════════════
+📋 TỔNG KẾT CHIẾN LƯỢC
+
+Pattern đang dùng: OPINION_AS_FACT
+Điểm yếu của lập luận: Không có evidence — toàn bộ claim dựa
+trên "cảm giác", không có reproduce steps, không có log, không
+có device cụ thể.
+
+🎯 Nếu chỉ được nói 1 câu:
+"Anh có reproduce steps không? Không có steps thì tụi em
+ không investigate được."
+
+📌 Không nhượng bộ điểm này:
+Không nhận "lỗi" khi chưa có evidence. Nhận investigate thì được,
+nhận "em code lỗi" thì không — vì nếu nhận, assumption đó sẽ
+được ghi nhận và dùng lại sau.
+═══════════════════════════════════════
+```
+
+</details>
+
+---
+
 ## Đóng góp câu mẫu
 
 Nghe được câu hay từ CTO? Thêm vào kho để mọi người cùng luyện.
