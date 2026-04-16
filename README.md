@@ -6,70 +6,70 @@ Tích hợp vào **Claude Code**, **Cursor**, **Antigravity**, **Windsurf**, **C
 
 ---
 
-## Ví dụ output
+## Ví dụ
 
-<details>
-<summary><b>/cto-counter</b> — paste hội thoại thật, nhận counter-argument ngay</summary>
-
-**Input:** Paste đoạn này vào sau khi gõ `/cto-counter`
+Gõ `/cto-counter` rồi paste đoạn hội thoại vào:
 
 ```
-CTO: "cảm giác như tính năng live activity này em code lỗi á"
+CTO: "cái bug premium này là do Duy với Kiên chứ ai, backend chưa
+      golive mà tụi em đã release là sao?"
+Dev: "Dạ backend đã golive từ thứ 3, em có link deploy đây anh."
+CTO: "ừ thì... nhưng mà lần sau tụi em phải nói sớm hơn,
+      anh không biết backend golive lúc nào đâu"
 ```
-
----
 
 **Output:**
 
-```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🧑‍💼 CTO nói: "cảm giác như tính năng live activity này em code lỗi á"
+---
 
-🎯 Pattern: OPINION_AS_FACT — 🟡 Advanced
-🎭 Hidden move: Dùng "cảm giác" để đặt verdict mà không cần evidence —
-   buộc dev phải defensive và chứng minh mình vô tội thay vì yêu cầu
-   data. Nếu dev không phản biện, assumption "em code lỗi" mặc định thành sự thật.
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
 
-💬 Phản biện ngay lập tức:
-"Anh có reproduce steps cụ thể không? Device nào, iOS version nào,
- flow nào? Tụi em cần basis để investigate — không thì không biết
- fix chỗ nào."
+🧑‍💼 **CTO nói:** *"cái bug premium này là do Duy với Kiên chứ ai, backend chưa golive mà tụi em đã release là sao?"*
 
-📚 Dẫn chứng để backup:
-• Absence of evidence ≠ evidence of absence — "cảm giác có lỗi"
-  không phải bug report. Cần: reproduce steps + device + log.
-• Live Activity chạy trên ActivityKit (iOS 16.1+) — behavior
-  thay đổi theo iOS version, lock screen policy, và notification
-  permission. "Lỗi" có thể là platform behavior, không phải code.
-• Burden of proof thuộc về người claim — người nói "có lỗi"
-  cần cung cấp evidence, không phải dev phải chứng minh ngược.
+🎯 **Pattern:** `BLAME_NAMED` + `BLAME_ABSENT` — 🟢 Common  
+🎭 **Hidden move:** Gọi tên cụ thể 2 người vắng mặt để pin blame trước khi có bất kỳ investigation nào — tạo "tội nhân" ngay trong cuộc họp, người còn lại không dám bênh vực.
 
-🔒 Câu chốt — nếu ổng vẫn tiếp tục né:
-"Anh share log hoặc mô tả reproduce steps thì tụi em investigate
- ngay. Nếu không có steps cụ thể thì đây là assumption, không phải
- bug — tụi em không thể fix assumption."
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💬 **Phản biện ngay:**  
+*"Anh ơi mình tìm root cause trước — backend golive chưa, log lỗi cụ thể là gì, rồi assign action item sau. Blame trước investigate sau thì sẽ fix sai chỗ."*
 
-═══════════════════════════════════════
-📋 TỔNG KẾT CHIẾN LƯỢC
+📚 **Dẫn chứng:**
+- **Blameless Postmortem** (Google SRE) — tìm root cause trước, không blame người — vì lỗi hệ thống thường do nhiều yếu tố, không phải 1 người. [sre.google/sre-book/postmortem-culture](https://sre.google/sre-book/postmortem-culture/)
+- Blame sớm làm team sợ report lỗi → bug bị giấu lâu hơn → thiệt hại lớn hơn.
 
-Pattern đang dùng: OPINION_AS_FACT
-Điểm yếu của lập luận: Không có evidence — toàn bộ claim dựa
-trên "cảm giác", không có reproduce steps, không có log, không
-có device cụ thể.
+🔒 **Câu chốt nếu ổng tiếp tục:**  
+*"Anh có thể confirm backend golive hay chưa trước không? Em có link deploy ở đây. Nếu đã golive thì root cause không phải backend — mình cần điều tra tiếp."*
 
-🎯 Nếu chỉ được nói 1 câu:
-"Anh có reproduce steps không? Không có steps thì tụi em
- không investigate được."
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
 
-📌 Không nhượng bộ điểm này:
-Không nhận "lỗi" khi chưa có evidence. Nhận investigate thì được,
-nhận "em code lỗi" thì không — vì nếu nhận, assumption đó sẽ
-được ghi nhận và dùng lại sau.
-═══════════════════════════════════════
-```
+🧑‍💼 **CTO nói:** *"ừ thì... nhưng mà lần sau tụi em phải nói sớm hơn, anh không biết backend golive lúc nào đâu"*
 
-</details>
+🎯 **Pattern:** `REVERSE_BLAME` — 🟢 Common  
+🎭 **Hidden move:** Acknowledge thua điểm trước (backend đã golive) nhưng ngay lập tức pivot sang blame dev vì "không communicate sớm" — thoát khỏi blame mà không cần nhận sai.
+
+💬 **Phản biện ngay:**  
+*"Dạ em có post link deploy lên channel #releases lúc 10:23 sáng thứ 3. Anh muốn tụi em notify thêm ở đâu nữa không? Tụi em làm ngay."*
+
+📚 **Dẫn chứng:**
+- Luôn document mọi thứ có timestamp — link deploy, message Slack, ticket update. Khi bị `REVERSE_BLAME`, đưa timestamp ra là kết thúc ngay.
+- Nếu chưa có record: *"Dạ lần sau em sẽ tag anh trực tiếp — anh muốn notify qua Slack hay email?"* — biến thành action item, không nhận blame.
+
+🔒 **Câu chốt:**  
+*"Anh ơi em có notify rồi — [link message]. Nếu format chưa đúng kỳ vọng thì mình define lại process để lần sau tụi em làm đúng ngay."*
+
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+
+> **═══════════════════════════════════════**  
+> 📋 **TỔNG KẾT CHIẾN LƯỢC**
+>
+> **Patterns đang dùng:** `BLAME_NAMED` → `BLAME_ABSENT` → `REVERSE_BLAME`  
+> **Điểm yếu:** Cả 3 câu đều không có evidence — chỉ có assumption và cảm giác. Câu 2 tự mâu thuẫn với câu 1.
+>
+> 🎯 **Nếu chỉ được nói 1 câu:**  
+> *"Anh ơi backend đã golive thứ 3, em có link — mình investigate log lỗi cụ thể trước nhé?"*
+>
+> 📌 **Không nhượng bộ:**  
+> Không nhận "do tụi em không nói sớm" khi đã có evidence đã notify đúng channel. Nhận action item cải thiện process thì được — nhận blame thì không.  
+> **═══════════════════════════════════════**
 
 ---
 
